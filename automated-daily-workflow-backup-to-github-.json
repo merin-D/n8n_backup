@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-24T04:31:02.556Z",
+  "updatedAt": "2026-03-26T10:58:22.188Z",
   "createdAt": "2026-03-24T03:40:56.277Z",
   "id": "vmvrizEz1gSc0iYy",
   "name": "Automated daily workflow backup to GitHub",
@@ -21,8 +21,8 @@
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        368,
-        240
+        256,
+        64
       ],
       "typeVersion": 1.2
     },
@@ -135,7 +135,7 @@
     },
     {
       "parameters": {
-        "resource": "repository",
+        "resource": "file",
         "owner": {
           "__rl": true,
           "value": "merin-D",
@@ -148,8 +148,7 @@
           "cachedResultName": "n8n_backup",
           "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
-        "returnAll": true,
-        "getRepositoryIssuesFilters": {}
+        "filePath": "="
       },
       "id": "d55efcc7-5873-4c9a-b374-b7b31814905b",
       "name": "Upload file",
@@ -231,7 +230,7 @@
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        480,
+        496,
         112
       ],
       "typeVersion": 1
@@ -296,6 +295,108 @@
         112
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "events": [
+          "update"
+        ]
+      },
+      "type": "n8n-nodes-base.n8nTrigger",
+      "typeVersion": 1,
+      "position": [
+        256,
+        240
+      ],
+      "id": "3d68871f-5125-414c-a14e-d467ad7ec0dd",
+      "name": "n8n Trigger"
+    },
+    {
+      "parameters": {
+        "events": [
+          "init"
+        ]
+      },
+      "type": "n8n-nodes-base.n8nTrigger",
+      "typeVersion": 1,
+      "position": [
+        256,
+        384
+      ],
+      "id": "8781e121-3be2-49d4-af0f-2918ec281ca5",
+      "name": "n8n Trigger1"
+    },
+    {
+      "parameters": {
+        "events": [
+          "activate"
+        ]
+      },
+      "type": "n8n-nodes-base.n8nTrigger",
+      "typeVersion": 1,
+      "position": [
+        256,
+        528
+      ],
+      "id": "29722565-3bf9-49f0-8ac4-abdf6e3de53e",
+      "name": "n8n Trigger2"
+    },
+    {
+      "parameters": {
+        "content": "## delete from git too ?",
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        816,
+        512
+      ],
+      "typeVersion": 1,
+      "id": "7f0ebafb-759d-40fd-87b2-96f67f0441ed",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Backup to SFTp and FTP",
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1136,
+        512
+      ],
+      "typeVersion": 1,
+      "id": "9e95e860-1192-41ac-886f-8e4712b64478",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Backup to Drive",
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1456,
+        512
+      ],
+      "typeVersion": 1,
+      "id": "58df4c4b-403e-449d-9524-80a8b71d96fa",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Dif - commit message with AI",
+        "height": 176,
+        "width": 416
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        880,
+        -80
+      ],
+      "typeVersion": 1,
+      "id": "ec28de1b-9fad-46f5-934e-ee07f67b3fa5",
+      "name": "Sticky Note6"
     }
   ],
   "connections": {
@@ -393,6 +494,39 @@
           }
         ]
       ]
+    },
+    "n8n Trigger": {
+      "main": [
+        [
+          {
+            "node": "List files from repo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n Trigger1": {
+      "main": [
+        [
+          {
+            "node": "List files from repo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "n8n Trigger2": {
+      "main": [
+        [
+          {
+            "node": "List files from repo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -405,7 +539,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "dd2d2087-5a73-4547-a6c8-06f27a1faaac",
+  "versionId": "0b15635b-dbaf-4054-a70a-344e906bbe78",
   "activeVersionId": null,
   "triggerCount": 0,
   "shared": [
