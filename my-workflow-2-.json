@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-24T04:43:26.550Z",
+  "updatedAt": "2026-03-24T04:44:48.673Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "My workflow 2",
@@ -100,18 +100,19 @@
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
         "resource": "file",
         "operation": "edit",
         "owner": {
           "__rl": true,
-          "mode": "name",
-          "value": ""
+          "value": "merin-D",
+          "mode": "name"
         },
         "repository": {
           "__rl": true,
+          "value": "n8n_backup",
           "mode": "list",
-          "value": ""
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
         "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
         "fileContent": "={{ $('To base64').item.json.data }}",
@@ -125,21 +126,28 @@
         -64
       ],
       "webhookId": "27218087-8df7-474d-a39f-70cfa9c34ec8",
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "0Ti5eA6O66pSCIW5",
+          "name": "GitHub account 2"
+        }
+      }
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
         "resource": "file",
         "owner": {
           "__rl": true,
-          "mode": "name",
-          "value": ""
+          "value": "merin-D",
+          "mode": "name"
         },
         "repository": {
           "__rl": true,
+          "value": "n8n_backup",
           "mode": "list",
-          "value": ""
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
         "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
         "fileContent": "={{ $('To base64').item.json.data }}",
@@ -153,7 +161,13 @@
         96
       ],
       "webhookId": "ce4b561b-acb9-4cd8-b76f-4928dada9674",
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "0Ti5eA6O66pSCIW5",
+          "name": "GitHub account 2"
+        }
+      }
     },
     {
       "parameters": {
@@ -387,9 +401,11 @@
     "binaryMode": "separate"
   },
   "staticData": null,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "pinData": {},
-  "versionId": "6fba113c-b4a9-49e6-bd12-e2d3506f086c",
+  "versionId": "906da864-4917-4203-8e41-bdc74b752140",
   "activeVersionId": null,
   "triggerCount": 0,
   "shared": [
