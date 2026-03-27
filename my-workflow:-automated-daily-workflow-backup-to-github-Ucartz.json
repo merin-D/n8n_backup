@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-26T11:12:25.043Z",
+  "updatedAt": "2026-03-26T11:22:54.132Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -353,8 +353,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -208,
-        240
+        -112,
+        288
       ],
       "typeVersion": 1,
       "id": "a6168543-5e33-49a2-8820-f8f890d9e82f",
@@ -367,8 +367,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        112,
-        240
+        208,
+        288
       ],
       "typeVersion": 1,
       "id": "f36a7687-0936-4bb2-a67d-13d8d236d4dd",
@@ -381,8 +381,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        432,
-        240
+        528,
+        288
       ],
       "typeVersion": 1,
       "id": "7ef71c78-827d-4dc1-bc53-9c9a255b439d",
@@ -396,12 +396,27 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -144,
-        -352
+        -544,
+        -336
       ],
       "typeVersion": 1,
       "id": "958cbf43-7c22-455a-98ae-2ccd70996e3b",
       "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Points for the article\n\nNo  n8n limitation of 1 day hostory, Git will maintain unlimited versions\n\nProper comment based on the change will help to get back to the correct change. (AI used)\n\nPeriodic Backup or Where there is a change in the workflow",
+        "height": 176,
+        "width": 416
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        864,
+        -336
+      ],
+      "typeVersion": 1,
+      "id": "6bbce6a4-dbad-42b8-8ad0-14ffc5c157f9",
+      "name": "Sticky Note7"
     }
   ],
   "connections": {
@@ -514,8 +529,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "d5ee02a9-da76-4224-bab3-2b6ff63f1b24",
-  "activeVersionId": "d5ee02a9-da76-4224-bab3-2b6ff63f1b24",
+  "versionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
+  "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
     {
@@ -527,9 +542,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-03-26T11:12:26.000Z",
-    "createdAt": "2026-03-26T11:09:22.042Z",
-    "versionId": "d5ee02a9-da76-4224-bab3-2b6ff63f1b24",
+    "updatedAt": "2026-03-26T11:23:01.000Z",
+    "createdAt": "2026-03-26T11:22:54.132Z",
+    "versionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
     "workflowId": "oNGNOg83KKaRtwVR",
     "nodes": [
       {
@@ -879,8 +894,8 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -208,
-          240
+          -112,
+          288
         ],
         "typeVersion": 1,
         "id": "a6168543-5e33-49a2-8820-f8f890d9e82f",
@@ -893,8 +908,8 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          112,
-          240
+          208,
+          288
         ],
         "typeVersion": 1,
         "id": "f36a7687-0936-4bb2-a67d-13d8d236d4dd",
@@ -907,8 +922,8 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          432,
-          240
+          528,
+          288
         ],
         "typeVersion": 1,
         "id": "7ef71c78-827d-4dc1-bc53-9c9a255b439d",
@@ -922,12 +937,27 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -144,
-          -352
+          -544,
+          -336
         ],
         "typeVersion": 1,
         "id": "958cbf43-7c22-455a-98ae-2ccd70996e3b",
         "name": "Sticky Note6"
+      },
+      {
+        "parameters": {
+          "content": "## Points for the article\n\nNo  n8n limitation of 1 day hostory, Git will maintain unlimited versions\n\nProper comment based on the change will help to get back to the correct change. (AI used)\n\nPeriodic Backup or Where there is a change in the workflow",
+          "height": 176,
+          "width": 416
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          864,
+          -336
+        ],
+        "typeVersion": 1,
+        "id": "6bbce6a4-dbad-42b8-8ad0-14ffc5c157f9",
+        "name": "Sticky Note7"
       }
     ],
     "connections": {
@@ -1028,7 +1058,7 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version d5ee02a9",
+    "name": "Version 836f6d2a",
     "description": "",
     "autosaved": true
   },
