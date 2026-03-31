@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T11:09:26.194Z",
+  "updatedAt": "2026-03-31T11:23:20.778Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -32,8 +32,8 @@
       "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        32,
-        16
+        -32,
+        32
       ],
       "typeVersion": 1,
       "credentials": {
@@ -277,7 +277,7 @@
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -52,
+        -80,
         -128
       ],
       "typeVersion": 1
@@ -349,12 +349,13 @@
     {
       "parameters": {
         "content": "## delete from git too ?",
+        "height": 176,
         "width": 304
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -112,
-        288
+        -80,
+        272
       ],
       "typeVersion": 1,
       "id": "a6168543-5e33-49a2-8820-f8f890d9e82f",
@@ -417,6 +418,72 @@
       "typeVersion": 1,
       "id": "6bbce6a4-dbad-42b8-8ad0-14ffc5c157f9",
       "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -464,
+        400
+      ],
+      "id": "90152490-c49e-4a71-ba49-9c40469bfea8",
+      "name": "List files",
+      "webhookId": "466e66e5-ea66-4f79-93c4-6be6f91d9a82",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        400
+      ],
+      "id": "b0b8b35a-3b0d-4d0e-a7db-cdb72bb61eb8",
+      "name": "Get many workflows",
+      "credentials": {
+        "n8nApi": {
+          "id": "m2d0HT9UuFtzGfuP",
+          "name": "n8n account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const githubFiles = $items(\"List files from repo\");\nconst workflows = $items(\"Retrieve workflows\");\n\n// workflow → filenames\nconst workflowNames = workflows.map(i => i.json.name + \".json\");\n\n// filter only your backup folder (IMPORTANT)\nconst filesToDelete = githubFiles.filter(file => {\n  if (!file.json.path.startsWith(\"n8n-backups/\")) return false;\n\n  return !workflowNames.includes(file.json.name);\n});\n\nreturn filesToDelete.map(file => ({\n  json: {\n    path: file.json.path,\n    sha: file.json.sha\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        400
+      ],
+      "id": "5c200b0b-799a-4daf-b122-05498049b76e",
+      "name": "Code in JavaScript"
     }
   ],
   "connections": {
@@ -458,6 +525,11 @@
         [
           {
             "node": "List files from repo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List files",
             "type": "main",
             "index": 0
           }
@@ -514,6 +586,28 @@
           }
         ]
       ]
+    },
+    "List files": {
+      "main": [
+        [
+          {
+            "node": "Get many workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many workflows": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -529,7 +623,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "29b282a5-6b2a-4c4e-8690-b890fe27c941",
+  "versionId": "59f31b88-e10e-436b-8479-bcee8f6c4c30",
   "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
