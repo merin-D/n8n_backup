@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T11:09:02.655Z",
+  "updatedAt": "2026-03-31T11:09:26.194Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -129,8 +129,8 @@
       "typeVersion": 1,
       "credentials": {
         "githubApi": {
-          "id": "0Ti5eA6O66pSCIW5",
-          "name": "GitHub account 2"
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
         }
       }
     },
@@ -529,7 +529,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "cb224349-2653-4363-ae43-253f3b749a36",
+  "versionId": "29b282a5-6b2a-4c4e-8690-b890fe27c941",
   "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
