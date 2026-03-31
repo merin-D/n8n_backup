@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T11:23:20.778Z",
+  "updatedAt": "2026-03-31T11:25:06.344Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -484,6 +484,41 @@
       ],
       "id": "5c200b0b-799a-4daf-b122-05498049b76e",
       "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "={{$json.path}}",
+        "commitMessage": "Auto delete removed workflow"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        400
+      ],
+      "id": "be3f3c80-4dca-4f19-bb03-af8808b63b61",
+      "name": "Delete a file",
+      "webhookId": "66bd3949-6df0-4d6e-9ce9-a06b5c1fffc2",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
     }
   ],
   "connections": {
@@ -608,6 +643,17 @@
           }
         ]
       ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Delete a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -623,7 +669,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "59f31b88-e10e-436b-8479-bcee8f6c4c30",
+  "versionId": "5adf7e77-08ae-4a0b-b724-8c4afeee2c0c",
   "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
