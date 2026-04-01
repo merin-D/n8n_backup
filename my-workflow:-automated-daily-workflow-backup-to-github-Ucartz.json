@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T11:25:06.344Z",
+  "updatedAt": "2026-04-01T05:57:13.218Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -32,8 +32,8 @@
       "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        -32,
-        32
+        64,
+        16
       ],
       "typeVersion": 1,
       "credentials": {
@@ -232,7 +232,7 @@
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -432,
+        -464,
         -128
       ],
       "typeVersion": 1
@@ -340,7 +340,7 @@
       "typeVersion": 1,
       "position": [
         -768,
-        256
+        272
       ],
       "id": "8e008110-698a-45b4-b3b3-0bd3b43fb691",
       "name": "n8n Trigger2",
@@ -368,8 +368,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        208,
-        288
+        240,
+        272
       ],
       "typeVersion": 1,
       "id": "f36a7687-0936-4bb2-a67d-13d8d236d4dd",
@@ -382,8 +382,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        528,
-        288
+        576,
+        272
       ],
       "typeVersion": 1,
       "id": "7ef71c78-827d-4dc1-bc53-9c9a255b439d",
@@ -397,8 +397,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -544,
-        -336
+        -432,
+        -368
       ],
       "typeVersion": 1,
       "id": "958cbf43-7c22-455a-98ae-2ccd70996e3b",
@@ -421,39 +421,6 @@
     },
     {
       "parameters": {
-        "resource": "file",
-        "operation": "list",
-        "owner": {
-          "__rl": true,
-          "value": "merin-D",
-          "mode": "name"
-        },
-        "repository": {
-          "__rl": true,
-          "value": "n8n_backup",
-          "mode": "list",
-          "cachedResultName": "n8n_backup",
-          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
-        }
-      },
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1.1,
-      "position": [
-        -464,
-        400
-      ],
-      "id": "90152490-c49e-4a71-ba49-9c40469bfea8",
-      "name": "List files",
-      "webhookId": "466e66e5-ea66-4f79-93c4-6be6f91d9a82",
-      "credentials": {
-        "githubApi": {
-          "id": "Uq5YyACHjNGYTcJj",
-          "name": "GitHub account 3"
-        }
-      }
-    },
-    {
-      "parameters": {
         "filters": {},
         "requestOptions": {}
       },
@@ -461,7 +428,7 @@
       "typeVersion": 1,
       "position": [
         -224,
-        400
+        480
       ],
       "id": "b0b8b35a-3b0d-4d0e-a7db-cdb72bb61eb8",
       "name": "Get many workflows",
@@ -480,7 +447,7 @@
       "typeVersion": 2,
       "position": [
         16,
-        400
+        480
       ],
       "id": "5c200b0b-799a-4daf-b122-05498049b76e",
       "name": "Code in JavaScript"
@@ -508,11 +475,44 @@
       "typeVersion": 1.1,
       "position": [
         224,
-        400
+        480
       ],
       "id": "be3f3c80-4dca-4f19-bb03-af8808b63b61",
       "name": "Delete a file",
       "webhookId": "66bd3949-6df0-4d6e-9ce9-a06b5c1fffc2",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -464,
+        480
+      ],
+      "id": "90152490-c49e-4a71-ba49-9c40469bfea8",
+      "name": "List files",
+      "webhookId": "466e66e5-ea66-4f79-93c4-6be6f91d9a82",
       "credentials": {
         "githubApi": {
           "id": "Uq5YyACHjNGYTcJj",
@@ -560,11 +560,6 @@
         [
           {
             "node": "List files from repo",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "List files",
             "type": "main",
             "index": 0
           }
@@ -622,17 +617,6 @@
         ]
       ]
     },
-    "List files": {
-      "main": [
-        [
-          {
-            "node": "Get many workflows",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get many workflows": {
       "main": [
         [
@@ -654,6 +638,17 @@
           }
         ]
       ]
+    },
+    "List files": {
+      "main": [
+        [
+          {
+            "node": "Get many workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -669,7 +664,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "5adf7e77-08ae-4a0b-b724-8c4afeee2c0c",
+  "versionId": "a8ecac7d-c913-42d3-ba99-7f17380884d6",
   "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
