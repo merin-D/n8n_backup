@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:24:57.843Z",
+  "updatedAt": "2026-04-07T11:28:25.728Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -246,7 +246,7 @@
       "name": "Json file",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        2448,
+        2240,
         6880
       ],
       "typeVersion": 1.1
@@ -260,7 +260,7 @@
       "name": "To base1",
       "type": "n8n-nodes-base.extractFromFile",
       "position": [
-        2688,
+        2432,
         6880
       ],
       "typeVersion": 1
@@ -293,19 +293,6 @@
         7296
       ],
       "typeVersion": 3.4
-    },
-    {
-      "parameters": {
-        "jsCode": "return $input.all().map(item => ({\n  json: item.json,\n  pairedItem: item.pairedItem\n}));"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2288,
-        6880
-      ],
-      "id": "9956ab16-99cf-438a-a441-08184445694e",
-      "name": "Code in JavaScript1"
     },
     {
       "parameters": {
@@ -394,7 +381,7 @@
       "parameters": {
         "content": "### Retrieve and process workflows from n8n",
         "height": 380,
-        "width": 840,
+        "width": 600,
         "color": 3
       },
       "id": "bdb56d11-9b1a-410f-a913-928098d40101",
@@ -474,17 +461,6 @@
       ]
     },
     "Retrieve workflows": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript1": {
       "main": [
         [
           {
@@ -613,8 +589,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "6df99b23-2e21-40f8-8e14-e5dc30e7ad0f",
-  "activeVersionId": "6df99b23-2e21-40f8-8e14-e5dc30e7ad0f",
+  "versionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
+  "activeVersionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
   "triggerCount": 1,
   "shared": [
     {
@@ -626,9 +602,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:24:59.000Z",
-    "createdAt": "2026-04-07T11:24:57.845Z",
-    "versionId": "6df99b23-2e21-40f8-8e14-e5dc30e7ad0f",
+    "updatedAt": "2026-04-07T11:28:27.000Z",
+    "createdAt": "2026-04-07T11:28:25.729Z",
+    "versionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -871,7 +847,7 @@
         "name": "Json file",
         "type": "n8n-nodes-base.convertToFile",
         "position": [
-          2448,
+          2240,
           6880
         ],
         "typeVersion": 1.1
@@ -885,7 +861,7 @@
         "name": "To base1",
         "type": "n8n-nodes-base.extractFromFile",
         "position": [
-          2688,
+          2432,
           6880
         ],
         "typeVersion": 1
@@ -918,19 +894,6 @@
           7296
         ],
         "typeVersion": 3.4
-      },
-      {
-        "parameters": {
-          "jsCode": "return $input.all().map(item => ({\n  json: item.json,\n  pairedItem: item.pairedItem\n}));"
-        },
-        "type": "n8n-nodes-base.code",
-        "typeVersion": 2,
-        "position": [
-          2288,
-          6880
-        ],
-        "id": "9956ab16-99cf-438a-a441-08184445694e",
-        "name": "Code in JavaScript1"
       },
       {
         "parameters": {
@@ -1019,7 +982,7 @@
         "parameters": {
           "content": "### Retrieve and process workflows from n8n",
           "height": 380,
-          "width": 840,
+          "width": 600,
           "color": 3
         },
         "id": "bdb56d11-9b1a-410f-a913-928098d40101",
@@ -1099,17 +1062,6 @@
         ]
       },
       "Retrieve workflows": {
-        "main": [
-          [
-            {
-              "node": "Code in JavaScript1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Code in JavaScript1": {
         "main": [
           [
             {
@@ -1222,9 +1174,9 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version 6df99b23",
+    "name": "Version a9a9d686",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
   "tags": [
     {
