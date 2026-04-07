@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T10:25:46.351Z",
+  "updatedAt": "2026-04-07T10:26:59.505Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -332,8 +332,8 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        1872,
-        2240
+        1888,
+        2288
       ],
       "id": "8a3cb3b1-5419-4e47-861f-976294717eec",
       "name": "Delete a file1",
@@ -594,7 +594,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "d43e064c-2dfd-4ef1-8d9c-e8eae4ed74e5",
+  "versionId": "fd2c524f-9e6d-4a31-9cd4-e55ed77cc9b3",
   "activeVersionId": "d43e064c-2dfd-4ef1-8d9c-e8eae4ed74e5",
   "triggerCount": 1,
   "shared": [
