@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:43:18.408Z",
+  "updatedAt": "2026-04-07T11:44:38.959Z",
   "createdAt": "2026-04-07T10:09:21.818Z",
   "id": "c51IRdWJfkPnKAxV",
   "name": "Deletion test 7",
@@ -42,7 +42,7 @@
         -64
       ],
       "id": "7a26a28d-ddc3-401a-8584-6cb266a11631",
-      "name": "AI Agent"
+      "name": "AI Agent Test 2"
     }
   ],
   "connections": {
@@ -50,7 +50,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "AI Agent Test 2",
             "type": "main",
             "index": 0
           }
@@ -61,7 +61,7 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "AI Agent Test 2",
             "type": "main",
             "index": 0
           }
@@ -76,7 +76,7 @@
   "staticData": null,
   "meta": null,
   "pinData": {},
-  "versionId": "67b8fa37-1043-4f23-b641-2686ce93338d",
+  "versionId": "0ecbb70f-ec61-4f55-b0f2-7817d966cc99",
   "activeVersionId": null,
   "triggerCount": 0,
   "shared": [
@@ -91,8 +91,8 @@
   "activeVersion": null,
   "tags": [],
   "_fileName": "deletion-test-7.json",
-  "_currentSize": 2026,
-  "_githubSize": null,
+  "_currentSize": 2047,
+  "_githubSize": 2150,
   "_changed": true,
-  "_isNew": true
+  "_isNew": false
 }
