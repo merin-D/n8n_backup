@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:28:25.728Z",
+  "updatedAt": "2026-04-07T11:40:48.638Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -34,21 +34,6 @@
       "typeVersion": 1,
       "id": "6c995f02-395b-4578-9a9b-30aba772d1a8",
       "name": "Sticky Note17"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "destinationFieldName": "items",
-        "options": {}
-      },
-      "id": "17bdbb72-6630-4546-9631-4079473d8e50",
-      "name": "Wait for all1",
-      "type": "n8n-nodes-base.aggregate",
-      "position": [
-        2112,
-        7152
-      ],
-      "typeVersion": 1
     },
     {
       "parameters": {
@@ -301,7 +286,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2352,
+        2080,
         7216
       ],
       "id": "c3ca8e63-a35d-4f71-ac10-66d29d30a639",
@@ -321,7 +306,7 @@
       "name": "Has files to delete?1",
       "type": "n8n-nodes-base.if",
       "position": [
-        2592,
+        2256,
         7216
       ],
       "typeVersion": 1
@@ -348,7 +333,7 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        2832,
+        2464,
         7200
       ],
       "id": "39eeeaf9-0d9a-4077-af59-69479638b8bb",
@@ -413,17 +398,30 @@
       "parameters": {
         "content": "### Delete Renamed workflows\n",
         "height": 248,
-        "width": 1032,
+        "width": 600,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2032,
-        7136
+        2000,
+        7152
       ],
       "typeVersion": 1,
       "id": "a9f9bf38-d7c8-443c-93be-ca9e4c4dc23b",
       "name": "Sticky Note19"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get GitHub files as a map of filename -> size\nconst githubFileMap = {};\n$('List files from repo').all().forEach(i => {\n  if (i.json.name) {\n    githubFileMap[i.json.name] = i.json.size;\n  }\n});\n\n// For each workflow, check if size differs\nconst results = $input.all().map(item => {\n  const workflowJson = JSON.stringify(item.json, null, 2);\n  const fileName = item.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n  \n  const currentSize = Buffer.byteLength(workflowJson, 'utf8');\n  const githubSize = githubFileMap[fileName];\n  \n  const isNew = githubSize === undefined;\n  const changed = isNew || currentSize !== githubSize;\n\n  return {\n    json: {\n      ...item.json,\n      _fileName: fileName,\n      _currentSize: currentSize,\n      _githubSize: githubSize ?? null,\n      _changed: changed,\n      _isNew: isNew\n    },\n    pairedItem: item.pairedItem\n  };\n});\n\n// Only pass through items that are new or changed\nreturn results.filter(r => r.json._changed || r.json._isNew);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2240,
+        6736
+      ],
+      "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
+      "name": "Filter changed files"
     }
   ],
   "connections": {
@@ -465,6 +463,11 @@
         [
           {
             "node": "Json file",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter changed files",
             "type": "main",
             "index": 0
           }
@@ -538,17 +541,6 @@
         []
       ]
     },
-    "Wait for all1": {
-      "main": [
-        [
-          {
-            "node": "Find files to delete1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Find files to delete1": {
       "main": [
         [
@@ -589,8 +581,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
-  "activeVersionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
+  "versionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
+  "activeVersionId": "dbdad4a0-4d16-4b4e-9f38-68da65151789",
   "triggerCount": 1,
   "shared": [
     {
@@ -602,9 +594,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:28:27.000Z",
-    "createdAt": "2026-04-07T11:28:25.729Z",
-    "versionId": "a9a9d686-6ab6-44a4-bebc-980510600054",
+    "updatedAt": "2026-04-07T11:40:06.000Z",
+    "createdAt": "2026-04-07T11:40:03.450Z",
+    "versionId": "dbdad4a0-4d16-4b4e-9f38-68da65151789",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -635,21 +627,6 @@
         "typeVersion": 1,
         "id": "6c995f02-395b-4578-9a9b-30aba772d1a8",
         "name": "Sticky Note17"
-      },
-      {
-        "parameters": {
-          "aggregate": "aggregateAllItemData",
-          "destinationFieldName": "items",
-          "options": {}
-        },
-        "id": "17bdbb72-6630-4546-9631-4079473d8e50",
-        "name": "Wait for all1",
-        "type": "n8n-nodes-base.aggregate",
-        "position": [
-          2112,
-          7152
-        ],
-        "typeVersion": 1
       },
       {
         "parameters": {
@@ -902,7 +879,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          2352,
+          2080,
           7216
         ],
         "id": "c3ca8e63-a35d-4f71-ac10-66d29d30a639",
@@ -922,7 +899,7 @@
         "name": "Has files to delete?1",
         "type": "n8n-nodes-base.if",
         "position": [
-          2592,
+          2256,
           7216
         ],
         "typeVersion": 1
@@ -949,7 +926,7 @@
         "type": "n8n-nodes-base.github",
         "typeVersion": 1.1,
         "position": [
-          2832,
+          2464,
           7200
         ],
         "id": "39eeeaf9-0d9a-4077-af59-69479638b8bb",
@@ -1014,17 +991,30 @@
         "parameters": {
           "content": "### Delete Renamed workflows\n",
           "height": 248,
-          "width": 1032,
+          "width": 600,
           "color": 2
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          2032,
-          7136
+          2000,
+          7152
         ],
         "typeVersion": 1,
         "id": "a9f9bf38-d7c8-443c-93be-ca9e4c4dc23b",
         "name": "Sticky Note19"
+      },
+      {
+        "parameters": {
+          "jsCode": "const crypto = require('crypto');\n\n// Get GitHub files as a map of filename -> sha\nconst githubFileMap = {};\n$('List files from repo').all().forEach(i => {\n  if (i.json.name) {\n    githubFileMap[i.json.name] = i.json.sha;\n  }\n});\n\n// For each workflow item, compute git blob SHA and compare\nconst results = $input.all().map(item => {\n  const workflowJson = JSON.stringify(item.json, null, 2);\n  const fileName = item.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n  \n  // Compute git blob SHA (same formula GitHub uses)\n  const content = Buffer.from(workflowJson);\n  const header = Buffer.from(`blob ${content.length}\\0`);\n  const store = Buffer.concat([header, content]);\n  const sha = crypto.createHash('sha1').update(store).digest('hex');\n  \n  const githubSha = githubFileMap[fileName];\n  const changed = githubSha !== sha;\n  const isNew = !githubSha;\n\n  return {\n    json: {\n      ...item.json,\n      _fileName: fileName,\n      _sha: sha,\n      _githubSha: githubSha || null,\n      _changed: changed,\n      _isNew: isNew\n    },\n    pairedItem: item.pairedItem\n  };\n});\n\n// Only return items that are new or changed\nreturn results.filter(r => r.json._changed || r.json._isNew);"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          2240,
+          6736
+        ],
+        "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
+        "name": "Filter changed files"
       }
     ],
     "connections": {
@@ -1066,6 +1056,11 @@
           [
             {
               "node": "Json file",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Filter changed files",
               "type": "main",
               "index": 0
             }
@@ -1139,17 +1134,6 @@
           []
         ]
       },
-      "Wait for all1": {
-        "main": [
-          [
-            {
-              "node": "Find files to delete1",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "Find files to delete1": {
         "main": [
           [
@@ -1174,7 +1158,7 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version a9a9d686",
+    "name": "Version dbdad4a0",
     "description": "",
     "autosaved": true
   },
