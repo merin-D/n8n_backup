@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T10:55:05.566Z",
+  "updatedAt": "2026-04-07T10:59:06.563Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -8,32 +8,18 @@
   "nodes": [
     {
       "parameters": {
-        "mode": "passThrough",
-        "options": {}
-      },
-      "id": "1b2cf03e-5ef5-47f6-9a11-3abc4a14363d",
-      "name": "Merge branches",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        3568,
-        5824
-      ],
-      "typeVersion": 2.1
-    },
-    {
-      "parameters": {
         "content": "## Points for the article\n\nNo  n8n limitation of 1 day hostory, Git will maintain unlimited versions\n\nProper comment based on the change will help to get back to the correct change. (AI used)\n\nPeriodic Backup or Where there is a change in the workflow\n\n\n\n## Backup to SFTp and FTP\n\n## Backup to Drive\n\n## Dif - commit message with AI",
         "height": 624,
         "width": 464
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        864,
-        5760
+        736,
+        6816
       ],
       "typeVersion": 1,
-      "id": "8702ac8a-83dc-413f-b938-946875ed02a3",
-      "name": "Sticky Note"
+      "id": "2f95c249-6187-473c-ba79-c550aa6a5744",
+      "name": "Sticky Note1"
     },
     {
       "parameters": {
@@ -42,12 +28,12 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        896,
-        5488
+        768,
+        6544
       ],
       "typeVersion": 1,
-      "id": "d6a44168-756d-4098-b161-448da6f2cd0e",
-      "name": "Sticky Note20"
+      "id": "6c995f02-395b-4578-9a9b-30aba772d1a8",
+      "name": "Sticky Note17"
     },
     {
       "parameters": {
@@ -55,12 +41,12 @@
         "destinationFieldName": "items",
         "options": {}
       },
-      "id": "30e983e1-9829-40bb-ba4b-606ab5e10175",
-      "name": "Wait for all",
+      "id": "17bdbb72-6630-4546-9631-4079473d8e50",
+      "name": "Wait for all1",
       "type": "n8n-nodes-base.aggregate",
       "position": [
-        3776,
-        5824
+        3520,
+        6880
       ],
       "typeVersion": 1
     },
@@ -72,12 +58,12 @@
           ]
         }
       },
-      "id": "fae26ecb-5c7f-4ff9-aa32-30c3b0e184c5",
-      "name": "Schedule Trigger1",
+      "id": "a3fa53e5-bf35-443d-82a3-35ba589571b8",
+      "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        1440,
-        5824
+        1312,
+        6880
       ],
       "typeVersion": 1.2
     },
@@ -86,12 +72,12 @@
         "filters": {},
         "requestOptions": {}
       },
-      "id": "9dcbae79-eb5f-4e5b-9416-e93d53074f22",
-      "name": "Retrieve workflows1",
+      "id": "ae5059fd-a905-4d41-a073-45c78bea0e60",
+      "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        2064,
-        5824
+        1936,
+        6880
       ],
       "typeVersion": 1,
       "credentials": {
@@ -112,12 +98,12 @@
         },
         "options": {}
       },
-      "id": "ef1f7219-ca03-41e3-b93f-ea00daef34f1",
-      "name": "Aggregate1",
+      "id": "e36dff80-ffec-43a0-8930-8785bbf828ae",
+      "name": "Aggregate",
       "type": "n8n-nodes-base.aggregate",
       "position": [
-        1824,
-        5824
+        1696,
+        6880
       ],
       "typeVersion": 1
     },
@@ -139,12 +125,12 @@
         },
         "filePath": "="
       },
-      "id": "c5631669-1eab-491e-9359-8321c23c9f2d",
-      "name": "List files from repo1",
+      "id": "adb72c48-173b-445e-9539-6df7de1736c7",
+      "name": "List files from repo",
       "type": "n8n-nodes-base.github",
       "position": [
-        1664,
-        5824
+        1536,
+        6880
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -172,16 +158,16 @@
           "cachedResultName": "n8n_backup",
           "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
-        "filePath": "={{ $('Retrieve workflows1').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json",
-        "fileContent": "={{ $('To base').item.json.data }}",
-        "commitMessage": "=Sync-{{ $('Commit date & file name1').item.json.commitDate }}"
+        "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json",
+        "fileContent": "={{ $('To base1').item.json.data }}",
+        "commitMessage": "=Sync-{{ $('Commit date & file name').item.json.commitDate }}"
       },
-      "id": "20a23d32-14f4-41dc-a78b-23c43e702730",
-      "name": "Update file1",
+      "id": "2836ce79-1f7d-4929-895a-1873de1d13e1",
+      "name": "Update file",
       "type": "n8n-nodes-base.github",
       "position": [
-        3408,
-        5744
+        3280,
+        6800
       ],
       "typeVersion": 1,
       "webhookId": "b877ef15-f96f-457b-8cac-5107a6b0f40f",
@@ -207,16 +193,16 @@
           "cachedResultName": "n8n_backup",
           "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
-        "filePath": "={{ $('Retrieve workflows1').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json",
-        "fileContent": "={{ $('To base').item.json.data }}",
-        "commitMessage": "=Sync-{{ $node['Commit date & file name1'].json.commitDate }}"
+        "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json",
+        "fileContent": "={{ $('To base1').item.json.data }}",
+        "commitMessage": "=Sync-{{ $node['Commit date & file name'].json.commitDate }}"
       },
-      "id": "136cd2a0-10c8-44f1-b17f-5a742d715894",
-      "name": "Upload file1",
+      "id": "3273b0e2-52ae-4fd2-9dc8-bb353540e2a5",
+      "name": "Upload file",
       "type": "n8n-nodes-base.github",
       "position": [
-        3408,
-        5904
+        3280,
+        6960
       ],
       "typeVersion": 1,
       "webhookId": "207cadf0-dfdd-41d3-be32-806b7dfac41c",
@@ -232,19 +218,19 @@
         "conditions": {
           "string": [
             {
-              "value1": "={{ $('Aggregate1').item.json.name }}",
+              "value1": "={{ $('Aggregate').item.json.name }}",
               "operation": "contains",
-              "value2": "={{ $('Retrieve workflows1').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json"
+              "value2": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json"
             }
           ]
         }
       },
-      "id": "d8796c09-1c63-4dbe-8cda-9946cc7891d7",
-      "name": "Check if file exists1",
+      "id": "f26fa6c5-dc3d-41ad-94ac-c8573f96decc",
+      "name": "Check if file exists",
       "type": "n8n-nodes-base.if",
       "position": [
-        3248,
-        5824
+        3120,
+        6880
       ],
       "typeVersion": 1
     },
@@ -256,12 +242,12 @@
           "format": true
         }
       },
-      "id": "2de42442-e109-433a-a53c-cd8461fb7b91",
-      "name": "Json file1",
+      "id": "28d2e5d4-27d9-4de8-be58-9d1feba5e8e1",
+      "name": "Json file",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        2432,
-        5824
+        2304,
+        6880
       ],
       "typeVersion": 1.1
     },
@@ -270,12 +256,12 @@
         "operation": "binaryToPropery",
         "options": {}
       },
-      "id": "3d576322-8b45-4abb-9621-036d1b6809fb",
-      "name": "To base",
+      "id": "bc604c4c-47dc-4e6e-98ce-33bc8b0eaab4",
+      "name": "To base1",
       "type": "n8n-nodes-base.extractFromFile",
       "position": [
-        2672,
-        5824
+        2544,
+        6880
       ],
       "typeVersion": 1
     },
@@ -293,18 +279,18 @@
               "id": "b0fe1bcc-e79c-4a6b-b8b4-44222c8bf4e8",
               "name": "fileName",
               "type": "string",
-              "value": "={{ $('Retrieve workflows1').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json"
+              "value": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}.json"
             }
           ]
         },
         "options": {}
       },
-      "id": "25f48023-fc15-417a-b95b-a10ffcefcb6b",
-      "name": "Commit date & file name1",
+      "id": "156c9941-8570-4e06-b79e-8224266acc6c",
+      "name": "Commit date & file name",
       "type": "n8n-nodes-base.set",
       "position": [
-        3088,
-        5824
+        2960,
+        6880
       ],
       "typeVersion": 3.4
     },
@@ -315,24 +301,24 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2272,
-        5824
+        2144,
+        6880
       ],
-      "id": "f5574460-5d61-4272-af6a-b44324f18b06",
-      "name": "Code in JavaScript"
+      "id": "9956ab16-99cf-438a-a441-08184445694e",
+      "name": "Code in JavaScript1"
     },
     {
       "parameters": {
-        "jsCode": "// Runs exactly ONCE after all workflows processed\nconst githubFiles = $('List files from repo1').all().map(i => i.json.name).filter(Boolean);\n\n// Build filename using ONLY the workflow name - no tag\nconst n8nWorkflows = $('Retrieve workflows1').all().map(i => {\n  return i.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n});\n\nif (n8nWorkflows.length === 0) {\n  throw new Error('Safety abort: n8n returned 0 workflows. Refusing to delete.');\n}\n\nif (githubFiles.length === 0) {\n  return [{ json: { skipped: true, reason: 'No GitHub files found' } }];\n}\n\nconsole.log('GitHub files:', githubFiles);\nconsole.log('n8n workflow filenames:', n8nWorkflows);\n\nconst filesToDelete = githubFiles.filter(f => !n8nWorkflows.includes(f));\n\nif (filesToDelete.length === 0) {\n  return [{ json: { skipped: true, reason: 'Nothing to delete' } }];\n}\n\nreturn filesToDelete.map(f => ({ json: { path: f, skipped: false } }));"
+        "jsCode": "// Runs exactly ONCE after all workflows processed\nconst githubFiles = $('List files from repo').all().map(i => i.json.name).filter(Boolean);\n\n// Build filename using ONLY the workflow name - no tag\nconst n8nWorkflows = $('Retrieve workflows').all().map(i => {\n  return i.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n});\n\nif (n8nWorkflows.length === 0) {\n  throw new Error('Safety abort: n8n returned 0 workflows. Refusing to delete.');\n}\n\nif (githubFiles.length === 0) {\n  return [{ json: { skipped: true, reason: 'No GitHub files found' } }];\n}\n\nconsole.log('GitHub files:', githubFiles);\nconsole.log('n8n workflow filenames:', n8nWorkflows);\n\nconst filesToDelete = githubFiles.filter(f => !n8nWorkflows.includes(f));\n\nif (filesToDelete.length === 0) {\n  return [{ json: { skipped: true, reason: 'Nothing to delete' } }];\n}\n\nreturn filesToDelete.map(f => ({ json: { path: f, skipped: false } }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3968,
-        5824
+        3760,
+        6880
       ],
-      "id": "f7cabe58-0849-40bd-9286-ce115beaffd8",
-      "name": "Find files to delete"
+      "id": "c3ca8e63-a35d-4f71-ac10-66d29d30a639",
+      "name": "Find files to delete1"
     },
     {
       "parameters": {
@@ -344,12 +330,12 @@
           ]
         }
       },
-      "id": "997851c8-36ae-4a75-9eac-35d728421621",
-      "name": "Has files to delete?",
+      "id": "46226a4e-a6ff-4157-8c9f-132f1775218f",
+      "name": "Has files to delete?1",
       "type": "n8n-nodes-base.if",
       "position": [
-        4208,
-        5824
+        4000,
+        6880
       ],
       "typeVersion": 1
     },
@@ -375,11 +361,11 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        4448,
-        5808
+        4240,
+        6864
       ],
-      "id": "683c9667-d57e-4f3a-b7f0-6c9c8614b229",
-      "name": "Delete a file",
+      "id": "39eeeaf9-0d9a-4077-af59-69479638b8bb",
+      "name": "Delete a file1",
       "webhookId": "4c9b3fa2-1af8-4243-85eb-83aa9d7b4ffe",
       "credentials": {
         "githubApi": {
@@ -395,12 +381,12 @@
         "width": 348,
         "color": 5
       },
-      "id": "47e54cc2-8f5c-43c5-8681-43d7cc638067",
-      "name": "Sticky Note9",
+      "id": "766c7cf4-b5c7-491f-aba2-0367e3da1205",
+      "name": "Sticky Note8",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1616,
-        5680
+        1488,
+        6736
       ],
       "typeVersion": 1
     },
@@ -411,12 +397,12 @@
         "width": 1032,
         "color": 3
       },
-      "id": "859e7b3f-56ae-498c-837b-ce19a76fabb1",
-      "name": "Sticky Note11",
+      "id": "bdb56d11-9b1a-410f-a913-928098d40101",
+      "name": "Sticky Note10",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1984,
-        5680
+        1856,
+        6736
       ],
       "typeVersion": 1
     },
@@ -427,199 +413,188 @@
         "width": 460,
         "color": 4
       },
-      "id": "9364b2db-23e4-4535-9b2c-3d6f18be339d",
-      "name": "Sticky Note21",
+      "id": "f3dcc9c8-aa32-40b8-a12e-cf7363cbe37d",
+      "name": "Sticky Note18",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        3056,
-        5680
+        2928,
+        6736
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
-        "content": "### Safe Delete Branch\n\n✅ Merge combines both branches into one stream\n✅ Aggregate waits for ALL items to finish\n✅ Find files runs exactly ONCE\n✅ Safety abort if n8n returns 0 workflows",
+        "content": "### Safe Delete Branch\n\n✅ Both branches feed into same input port\n✅ Aggregate waits for ALL items to finish\n✅ Find files runs exactly ONCE\n✅ Safety abort if n8n returns 0 workflows",
         "height": 200,
         "width": 600,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        3536,
-        5680
+        3488,
+        6736
       ],
       "typeVersion": 1,
-      "id": "79c12e48-839f-45ce-a071-8fc727ed6dcf",
-      "name": "Sticky Note22"
+      "id": "a9f9bf38-d7c8-443c-93be-ca9e4c4dc23b",
+      "name": "Sticky Note19"
     }
   ],
   "connections": {
-    "Merge branches": {
+    "Schedule Trigger": {
       "main": [
         [
           {
-            "node": "Wait for all",
+            "node": "List files from repo",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Wait for all": {
+    "List files from repo": {
       "main": [
         [
           {
-            "node": "Find files to delete",
+            "node": "Aggregate",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Schedule Trigger1": {
+    "Aggregate": {
       "main": [
         [
           {
-            "node": "List files from repo1",
+            "node": "Retrieve workflows",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Retrieve workflows1": {
+    "Retrieve workflows": {
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Code in JavaScript1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Aggregate1": {
+    "Code in JavaScript1": {
       "main": [
         [
           {
-            "node": "Retrieve workflows1",
+            "node": "Json file",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "List files from repo1": {
+    "Json file": {
       "main": [
         [
           {
-            "node": "Aggregate1",
+            "node": "To base1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update file1": {
+    "To base1": {
       "main": [
         [
           {
-            "node": "Merge branches",
+            "node": "Commit date & file name",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Upload file1": {
+    "Commit date & file name": {
       "main": [
         [
           {
-            "node": "Merge branches",
+            "node": "Check if file exists",
             "type": "main",
-            "index": 1
+            "index": 0
           }
         ]
       ]
     },
-    "Check if file exists1": {
+    "Check if file exists": {
       "main": [
         [
           {
-            "node": "Update file1",
+            "node": "Update file",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Upload file1",
+            "node": "Upload file",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Json file1": {
+    "Update file": {
       "main": [
         [
           {
-            "node": "To base",
+            "node": "Wait for all1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "To base": {
+    "Upload file": {
       "main": [
         [
           {
-            "node": "Commit date & file name1",
+            "node": "Wait for all1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Commit date & file name1": {
+    "Wait for all1": {
       "main": [
         [
           {
-            "node": "Check if file exists1",
+            "node": "Find files to delete1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code in JavaScript": {
+    "Find files to delete1": {
       "main": [
         [
           {
-            "node": "Json file1",
+            "node": "Has files to delete?1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Find files to delete": {
+    "Has files to delete?1": {
       "main": [
         [
           {
-            "node": "Has files to delete?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Has files to delete?": {
-      "main": [
-        [
-          {
-            "node": "Delete a file",
+            "node": "Delete a file1",
             "type": "main",
             "index": 0
           }
@@ -644,7 +619,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "d8e4d4e8-a97d-4671-9bad-f19cf9e2ceef",
+  "versionId": "912d1832-8ba1-41c7-a0fa-b7434682281b",
   "activeVersionId": "d43e064c-2dfd-4ef1-8d9c-e8eae4ed74e5",
   "triggerCount": 1,
   "shared": [
