@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T10:09:36.103Z",
+  "updatedAt": "2026-04-07T10:10:40.793Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -381,7 +381,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Get GitHub file names from Aggregate node (already in execution path)\nconst githubFiles = $('Aggregate').first().json.name;\n\n// Must be an array\nconst githubFileList = Array.isArray(githubFiles) ? githubFiles : [githubFiles];\n\n// Get n8n workflow names from Retrieve workflows node\nconst n8nWorkflows = $('Retrieve workflows').all().map(i => i.json.name + '.json');\n\n// Safety abort\nif (githubFileList.length === 0) {\n  throw new Error('Safety abort: GitHub file list is empty.');\n}\nif (n8nWorkflows.length === 0) {\n  throw new Error('Safety abort: n8n workflow list is empty. Refusing to delete anything.');\n}\n\n// Only delete files that no longer exist in n8n\nconst filesToDelete = githubFileList.filter(f => !n8nWorkflows.includes(f));\n\nif (filesToDelete.length === 0) {\n  return [{ json: { skipped: true, reason: 'Nothing to delete' } }];\n}\n\nreturn filesToDelete.map(f => ({ json: { path: f, skipped: false } }));"
+        "jsCode": "// Both nodes are in the main execution path so both are accessible\nconst githubFiles = $('Aggregate').first().json.name;\nconst githubFileList = Array.isArray(githubFiles) ? githubFiles : [githubFiles];\n\nconst n8nWorkflows = $('Retrieve workflows').all().map(i => i.json.name + '.json');\n\n// Safety abort - refuse to delete if n8n returned nothing\nif (n8nWorkflows.length === 0) {\n  throw new Error('Safety abort: n8n returned 0 workflows. Refusing to delete.');\n}\n\nif (githubFileList.length === 0) {\n  return [{ json: { skipped: true, reason: 'No GitHub files found' } }];\n}\n\nconst filesToDelete = githubFileList.filter(f => !n8nWorkflows.includes(f));\n\nif (filesToDelete.length === 0) {\n  return [{ json: { skipped: true, reason: 'Nothing to delete' } }];\n}\n\nreturn filesToDelete.map(f => ({ json: { path: f, skipped: false } }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1039,7 +1039,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "d5bd3e70-4515-423e-9d20-6eb74cca57d4",
+  "versionId": "10096466-bdc3-48b9-b5d2-2d951cde247d",
   "activeVersionId": "d5bd3e70-4515-423e-9d20-6eb74cca57d4",
   "triggerCount": 1,
   "shared": [
