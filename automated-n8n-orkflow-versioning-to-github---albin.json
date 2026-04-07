@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:42:25.995Z",
+  "updatedAt": "2026-04-07T11:43:41.131Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -417,8 +417,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2224,
-        6736
+        2288,
+        6688
       ],
       "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
       "name": "Filter changed files"
@@ -587,7 +587,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "e49da247-308d-4144-9dfa-3634091e4d47",
+  "versionId": "7d6b64b7-5898-454d-accf-42b7beec5312",
   "activeVersionId": "e49da247-308d-4144-9dfa-3634091e4d47",
   "triggerCount": 1,
   "shared": [
@@ -1184,7 +1184,7 @@
   ],
   "_fileName": "automated-n8n-orkflow-versioning-to-github---albin.json",
   "_currentSize": 32993,
-  "_githubSize": 32821,
+  "_githubSize": 33155,
   "_changed": true,
   "_isNew": false
 }
