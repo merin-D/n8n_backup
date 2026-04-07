@@ -582,7 +582,7 @@
   },
   "pinData": {},
   "versionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
-  "activeVersionId": "dbdad4a0-4d16-4b4e-9f38-68da65151789",
+  "activeVersionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
   "triggerCount": 1,
   "shared": [
     {
@@ -594,9 +594,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:40:06.000Z",
-    "createdAt": "2026-04-07T11:40:03.450Z",
-    "versionId": "dbdad4a0-4d16-4b4e-9f38-68da65151789",
+    "updatedAt": "2026-04-07T11:41:17.000Z",
+    "createdAt": "2026-04-07T11:40:48.639Z",
+    "versionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -1005,7 +1005,7 @@
       },
       {
         "parameters": {
-          "jsCode": "const crypto = require('crypto');\n\n// Get GitHub files as a map of filename -> sha\nconst githubFileMap = {};\n$('List files from repo').all().forEach(i => {\n  if (i.json.name) {\n    githubFileMap[i.json.name] = i.json.sha;\n  }\n});\n\n// For each workflow item, compute git blob SHA and compare\nconst results = $input.all().map(item => {\n  const workflowJson = JSON.stringify(item.json, null, 2);\n  const fileName = item.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n  \n  // Compute git blob SHA (same formula GitHub uses)\n  const content = Buffer.from(workflowJson);\n  const header = Buffer.from(`blob ${content.length}\\0`);\n  const store = Buffer.concat([header, content]);\n  const sha = crypto.createHash('sha1').update(store).digest('hex');\n  \n  const githubSha = githubFileMap[fileName];\n  const changed = githubSha !== sha;\n  const isNew = !githubSha;\n\n  return {\n    json: {\n      ...item.json,\n      _fileName: fileName,\n      _sha: sha,\n      _githubSha: githubSha || null,\n      _changed: changed,\n      _isNew: isNew\n    },\n    pairedItem: item.pairedItem\n  };\n});\n\n// Only return items that are new or changed\nreturn results.filter(r => r.json._changed || r.json._isNew);"
+          "jsCode": "// Get GitHub files as a map of filename -> size\nconst githubFileMap = {};\n$('List files from repo').all().forEach(i => {\n  if (i.json.name) {\n    githubFileMap[i.json.name] = i.json.size;\n  }\n});\n\n// For each workflow, check if size differs\nconst results = $input.all().map(item => {\n  const workflowJson = JSON.stringify(item.json, null, 2);\n  const fileName = item.json.name.replace(/\\s+/g, '-').toLowerCase() + '.json';\n  \n  const currentSize = Buffer.byteLength(workflowJson, 'utf8');\n  const githubSize = githubFileMap[fileName];\n  \n  const isNew = githubSize === undefined;\n  const changed = isNew || currentSize !== githubSize;\n\n  return {\n    json: {\n      ...item.json,\n      _fileName: fileName,\n      _currentSize: currentSize,\n      _githubSize: githubSize ?? null,\n      _changed: changed,\n      _isNew: isNew\n    },\n    pairedItem: item.pairedItem\n  };\n});\n\n// Only pass through items that are new or changed\nreturn results.filter(r => r.json._changed || r.json._isNew);"
         },
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
@@ -1158,7 +1158,7 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version dbdad4a0",
+    "name": "Version aa34ac2c",
     "description": "",
     "autosaved": true
   },
