@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:40:48.638Z",
+  "updatedAt": "2026-04-07T11:42:25.995Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -61,8 +61,8 @@
       "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        2080,
-        6880
+        2032,
+        6816
       ],
       "typeVersion": 1,
       "credentials": {
@@ -417,7 +417,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2240,
+        2224,
         6736
       ],
       "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
@@ -461,11 +461,6 @@
     "Retrieve workflows": {
       "main": [
         [
-          {
-            "node": "Json file",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "Filter changed files",
             "type": "main",
@@ -562,6 +557,17 @@
           }
         ]
       ]
+    },
+    "Filter changed files": {
+      "main": [
+        [
+          {
+            "node": "Json file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -581,8 +587,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
-  "activeVersionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
+  "versionId": "e49da247-308d-4144-9dfa-3634091e4d47",
+  "activeVersionId": "e49da247-308d-4144-9dfa-3634091e4d47",
   "triggerCount": 1,
   "shared": [
     {
@@ -594,9 +600,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:41:17.000Z",
-    "createdAt": "2026-04-07T11:40:48.639Z",
-    "versionId": "aa34ac2c-0673-4a94-a43e-fb2bd4a9311c",
+    "updatedAt": "2026-04-07T11:42:32.000Z",
+    "createdAt": "2026-04-07T11:42:25.997Z",
+    "versionId": "e49da247-308d-4144-9dfa-3634091e4d47",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -654,8 +660,8 @@
         "name": "Retrieve workflows",
         "type": "n8n-nodes-base.n8n",
         "position": [
-          2080,
-          6880
+          2032,
+          6816
         ],
         "typeVersion": 1,
         "credentials": {
@@ -1010,7 +1016,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          2240,
+          2224,
           6736
         ],
         "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
@@ -1054,11 +1060,6 @@
       "Retrieve workflows": {
         "main": [
           [
-            {
-              "node": "Json file",
-              "type": "main",
-              "index": 0
-            },
             {
               "node": "Filter changed files",
               "type": "main",
@@ -1155,10 +1156,21 @@
             }
           ]
         ]
+      },
+      "Filter changed files": {
+        "main": [
+          [
+            {
+              "node": "Json file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version aa34ac2c",
+    "name": "Version e49da247",
     "description": "",
     "autosaved": true
   },
@@ -1169,5 +1181,10 @@
       "id": "MafV0QzOGcn2AUtk",
       "name": "Ucartz"
     }
-  ]
+  ],
+  "_fileName": "automated-n8n-orkflow-versioning-to-github---albin.json",
+  "_currentSize": 32993,
+  "_githubSize": 32821,
+  "_changed": true,
+  "_isNew": false
 }
