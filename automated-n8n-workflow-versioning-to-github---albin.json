@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:58:27.670Z",
+  "updatedAt": "2026-04-07T12:13:08.546Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N Workflow versioning to github - albin",
@@ -14,8 +14,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        624,
-        6800
+        688,
+        6816
       ],
       "typeVersion": 1,
       "id": "2f95c249-6187-473c-ba79-c550aa6a5744",
@@ -28,8 +28,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        640,
-        6608
+        688,
+        6624
       ],
       "typeVersion": 1,
       "id": "6c995f02-395b-4578-9a9b-30aba772d1a8",
@@ -151,8 +151,8 @@
       "name": "Update file",
       "type": "n8n-nodes-base.github",
       "position": [
-        1872,
-        7216
+        1776,
+        7152
       ],
       "typeVersion": 1,
       "webhookId": "b877ef15-f96f-457b-8cac-5107a6b0f40f",
@@ -186,8 +186,8 @@
       "name": "Upload file",
       "type": "n8n-nodes-base.github",
       "position": [
-        1872,
-        7376
+        1776,
+        7312
       ],
       "typeVersion": 1,
       "webhookId": "207cadf0-dfdd-41d3-be32-806b7dfac41c",
@@ -214,8 +214,8 @@
       "name": "Check if file exists",
       "type": "n8n-nodes-base.if",
       "position": [
-        1712,
-        7296
+        1616,
+        7232
       ],
       "typeVersion": 1
     },
@@ -274,8 +274,8 @@
       "name": "Commit date & file name",
       "type": "n8n-nodes-base.set",
       "position": [
-        1552,
-        7296
+        1456,
+        7232
       ],
       "typeVersion": 3.4
     },
@@ -286,8 +286,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2080,
-        7216
+        1984,
+        7152
       ],
       "id": "c3ca8e63-a35d-4f71-ac10-66d29d30a639",
       "name": "Find files to delete1"
@@ -306,8 +306,8 @@
       "name": "Has files to delete?1",
       "type": "n8n-nodes-base.if",
       "position": [
-        2256,
-        7216
+        2160,
+        7152
       ],
       "typeVersion": 1
     },
@@ -333,8 +333,8 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
       "position": [
-        2464,
-        7200
+        2368,
+        7136
       ],
       "id": "39eeeaf9-0d9a-4077-af59-69479638b8bb",
       "name": "Delete a file1",
@@ -389,8 +389,8 @@
       "name": "Sticky Note18",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1520,
-        7152
+        1424,
+        7088
       ],
       "typeVersion": 1
     },
@@ -403,8 +403,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2000,
-        7152
+        1904,
+        7088
       ],
       "typeVersion": 1,
       "id": "a9f9bf38-d7c8-443c-93be-ca9e4c4dc23b",
@@ -587,7 +587,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "b2f9aaf5-2173-4b03-b576-c16e8c89f7f0",
+  "versionId": "106f73fa-6c28-4b12-9e44-0da016513759",
   "activeVersionId": "b2f9aaf5-2173-4b03-b576-c16e8c89f7f0",
   "triggerCount": 1,
   "shared": [
