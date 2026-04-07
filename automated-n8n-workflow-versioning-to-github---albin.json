@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:50:29.294Z",
+  "updatedAt": "2026-04-07T11:53:08.900Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N Workflow versioning to github - albin",
@@ -328,7 +328,7 @@
           "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
         },
         "filePath": "={{ $json.path }}",
-        "commitMessage": "Auto delete removed workflow: {{ $json.path }}"
+        "commitMessage": "=Auto delete removed workflow: {{ $json.path }}"
       },
       "type": "n8n-nodes-base.github",
       "typeVersion": 1.1,
@@ -397,7 +397,7 @@
     {
       "parameters": {
         "content": "### Delete Renamed workflows\n",
-        "height": 248,
+        "height": 408,
         "width": 600,
         "color": 2
       },
@@ -587,8 +587,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "ed4e3b33-ac1f-4638-930d-65fc0a8c307f",
-  "activeVersionId": "ed4e3b33-ac1f-4638-930d-65fc0a8c307f",
+  "versionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
+  "activeVersionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
   "triggerCount": 1,
   "shared": [
     {
@@ -600,9 +600,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:50:36.000Z",
-    "createdAt": "2026-04-07T11:49:43.014Z",
-    "versionId": "ed4e3b33-ac1f-4638-930d-65fc0a8c307f",
+    "updatedAt": "2026-04-07T11:53:15.000Z",
+    "createdAt": "2026-04-07T11:53:08.902Z",
+    "versionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -927,7 +927,7 @@
             "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
           },
           "filePath": "={{ $json.path }}",
-          "commitMessage": "Auto delete removed workflow: {{ $json.path }}"
+          "commitMessage": "=Auto delete removed workflow: {{ $json.path }}"
         },
         "type": "n8n-nodes-base.github",
         "typeVersion": 1.1,
@@ -996,7 +996,7 @@
       {
         "parameters": {
           "content": "### Delete Renamed workflows\n",
-          "height": 248,
+          "height": 408,
           "width": 600,
           "color": 2
         },
@@ -1170,7 +1170,7 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version ed4e3b33",
+    "name": "Version 87feb7eb",
     "description": "",
     "autosaved": true
   },
@@ -1183,7 +1183,7 @@
     }
   ],
   "_fileName": "automated-n8n-workflow-versioning-to-github---albin.json",
-  "_currentSize": 32992,
+  "_currentSize": 32994,
   "_githubSize": 33155,
   "_changed": true,
   "_isNew": false
