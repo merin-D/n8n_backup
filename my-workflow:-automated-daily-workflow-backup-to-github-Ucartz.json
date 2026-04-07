@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-01T05:57:13.218Z",
+  "updatedAt": "2026-04-04T04:35:18.174Z",
   "createdAt": "2026-03-24T04:36:39.986Z",
   "id": "oNGNOg83KKaRtwVR",
   "name": "my workflow: Automated daily workflow backup to GitHub",
@@ -32,7 +32,7 @@
       "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        64,
+        0,
         16
       ],
       "typeVersion": 1,
@@ -202,7 +202,7 @@
       "name": "Json file",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        320,
+        368,
         16
       ],
       "typeVersion": 1.1
@@ -441,13 +441,13 @@
     },
     {
       "parameters": {
-        "jsCode": "const githubFiles = $items(\"List files from repo\");\nconst workflows = $items(\"Retrieve workflows\");\n\n// workflow → filenames\nconst workflowNames = workflows.map(i => i.json.name + \".json\");\n\n// filter only your backup folder (IMPORTANT)\nconst filesToDelete = githubFiles.filter(file => {\n  if (!file.json.path.startsWith(\"n8n-backups/\")) return false;\n\n  return !workflowNames.includes(file.json.name);\n});\n\nreturn filesToDelete.map(file => ({\n  json: {\n    path: file.json.path,\n    sha: file.json.sha\n  }\n}));"
+        "jsCode": "const githubFiles = items[0].json.githubFiles; \nconst n8nWorkflows = items[1].json.workflows;\n\nconst n8nNames = n8nWorkflows.map(w => w.name + '.json');\n\nconst filesToDelete = githubFiles.filter(file => !n8nNames.includes(file));\n\nreturn filesToDelete.map(f => ({ json: { path: f } }));"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        16,
-        480
+        32,
+        512
       ],
       "id": "5c200b0b-799a-4daf-b122-05498049b76e",
       "name": "Code in JavaScript"
@@ -519,6 +519,52 @@
           "name": "GitHub account 3"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1312,
+        256
+      ],
+      "id": "a73e592e-11e4-40e0-9d0d-781977fac28c",
+      "name": "Delete a file1",
+      "webhookId": "b973c898-ba06-4656-9380-4d30b4562e1d",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const githubFiles = $input.first(0).json.githubFiles;\nconst workflows = $input.all(1).map(i => i.json);\n\nconst n8nNames = workflows.map(w => w.name + '.json');\n\nconst filesToDelete = githubFiles.filter(f => !n8nNames.includes(f));\n\nreturn filesToDelete.map(f => ({ json: { path: f } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        16
+      ],
+      "id": "a3992a58-27e1-4659-992e-06d4097028a4",
+      "name": "Code in JavaScript1"
     }
   ],
   "connections": {
@@ -570,7 +616,7 @@
       "main": [
         [
           {
-            "node": "Json file",
+            "node": "Code in JavaScript1",
             "type": "main",
             "index": 0
           }
@@ -582,6 +628,11 @@
         [
           {
             "node": "Update file",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Delete a file1",
             "type": "main",
             "index": 0
           }
@@ -619,24 +670,12 @@
     },
     "Get many workflows": {
       "main": [
-        [
-          {
-            "node": "Code in JavaScript",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Code in JavaScript": {
       "main": [
-        [
-          {
-            "node": "Delete a file",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "List files": {
@@ -644,6 +683,17 @@
         [
           {
             "node": "Get many workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Json file",
             "type": "main",
             "index": 0
           }
@@ -664,7 +714,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "a8ecac7d-c913-42d3-ba99-7f17380884d6",
+  "versionId": "0e2fc0b0-e574-4b95-9764-8ead5f3aa1ae",
   "activeVersionId": "836f6d2a-20e3-4be9-96c4-bcb3c9d106a1",
   "triggerCount": 1,
   "shared": [
