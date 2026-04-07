@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T10:59:06.563Z",
+  "updatedAt": "2026-04-07T11:00:38.043Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N orkflow versioning to GitHub - Albin",
@@ -559,13 +559,7 @@
     },
     "Upload file": {
       "main": [
-        [
-          {
-            "node": "Wait for all1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Wait for all1": {
@@ -619,7 +613,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "912d1832-8ba1-41c7-a0fa-b7434682281b",
+  "versionId": "e7df9880-8ba1-4d58-9b90-92197492d5ba",
   "activeVersionId": "d43e064c-2dfd-4ef1-8d9c-e8eae4ed74e5",
   "triggerCount": 1,
   "shared": [
