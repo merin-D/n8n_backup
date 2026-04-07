@@ -1,0 +1,43 @@
+{
+  "updatedAt": "2026-04-07T10:43:50.431Z",
+  "createdAt": "2026-04-07T10:09:21.818Z",
+  "id": "c51IRdWJfkPnKAxV",
+  "name": "Deletion test3",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        32,
+        -48
+      ],
+      "id": "a998b06f-466b-4809-b31d-b1575ae8002e",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "bcd430b2-3df6-4dd2-bd74-6c78d9e8395e",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-04-07T10:09:21.821Z",
+      "createdAt": "2026-04-07T10:09:21.821Z",
+      "role": "workflow:owner",
+      "workflowId": "c51IRdWJfkPnKAxV",
+      "projectId": "6A4ZRN1cCrGEOl69"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}
