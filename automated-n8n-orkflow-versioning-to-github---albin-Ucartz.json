@@ -1,0 +1,1368 @@
+{
+  "updatedAt": "2026-04-07T09:48:33.989Z",
+  "createdAt": "2026-04-07T09:31:09.211Z",
+  "id": "oO0fMXDkxvNT0nDP",
+  "name": "Automated N8N orkflow versioning to GitHub - Albin",
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "4b05abf7-11b7-4f8e-bbcb-1c6fd921e40b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -624,
+        16
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "id": "12fa8554-9477-4468-9e34-f5adbff06b23",
+      "name": "Retrieve workflows",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        0,
+        16
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "m2d0HT9UuFtzGfuP",
+          "name": "n8n account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1a03f729-84a4-4683-8603-cc86fa4476e0",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "position": [
+        -240,
+        16
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "="
+      },
+      "id": "81605ea0-bd1e-41bf-be8c-83cdb6fb0bb2",
+      "name": "List files from repo",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        -400,
+        16
+      ],
+      "webhookId": "29579f80-d12d-463e-aa2b-4013b11cd064",
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
+        "fileContent": "={{ $('To base64').item.json.data }}",
+        "commitMessage": "=Sync-{{ $('Commit date & file name').item.json.commitDate }}"
+      },
+      "id": "49d5c74e-e54d-4c5f-a485-2f254dbd27f6",
+      "name": "Update file",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        1344,
+        -64
+      ],
+      "webhookId": "27615548-5dd2-4eba-8d86-f548dc53a1fc",
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
+        "fileContent": "={{ $('To base64').item.json.data }}",
+        "commitMessage": "=Sync-{{ $node['Commit date & file name'].json.commitDate }}"
+      },
+      "id": "2399ead3-1283-4c57-9768-f2d03e2384c0",
+      "name": "Upload file",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        1344,
+        96
+      ],
+      "webhookId": "a1fb1aa4-c3a8-4d53-9398-5718cc2a28dc",
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Aggregate').item.json.name }}",
+              "operation": "contains",
+              "value2": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json"
+            }
+          ]
+        }
+      },
+      "id": "7680671b-63af-4f23-b76a-dfe65ce64fa0",
+      "name": "Check if file exists",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1184,
+        16
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "mode": "each",
+        "options": {
+          "format": true
+        }
+      },
+      "id": "ed73ca00-cc2a-49d6-b240-32b5c2e8bebb",
+      "name": "Json file",
+      "type": "n8n-nodes-base.convertToFile",
+      "position": [
+        368,
+        16
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "id": "e902f5df-619b-414a-be1d-33ba63107617",
+      "name": "To base64",
+      "type": "n8n-nodes-base.extractFromFile",
+      "position": [
+        608,
+        16
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Retrieve previous file names from Github",
+        "height": 380,
+        "width": 348,
+        "color": 5
+      },
+      "id": "0b02a0d2-607b-40ba-92ba-bed33ec4ca17",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -448,
+        -128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fe4a36ef-9f04-40e3-99bd-cc517a49b440",
+              "name": "commitDate",
+              "type": "string",
+              "value": "={{ $now.format('dd-MM-yyyy/H:mm') }}"
+            },
+            {
+              "id": "b0fe1bcc-e79c-4a6b-b8b4-44222c8bf4e8",
+              "name": "fileName",
+              "type": "string",
+              "value": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8e3fe47-550b-4f66-9dd5-a3daac4cf3cf",
+      "name": "Commit date & file name",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1024,
+        16
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": "### Retrieve and process workflows from n8n",
+        "height": 380,
+        "width": 1032,
+        "color": 3
+      },
+      "id": "1f919bc1-f433-4617-b920-571686b2dc66",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        -128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Commit + edit/create files if needed",
+        "height": 380,
+        "width": 460,
+        "color": 4
+      },
+      "id": "5e30c0e7-ef38-43a5-816f-2d02ff207e6c",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        992,
+        -128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## delete from git too ?",
+        "height": 176,
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        272
+      ],
+      "typeVersion": 1,
+      "id": "17859a97-71b4-4fca-a2bd-817c12366d71",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Backup to SFTp and FTP",
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        240,
+        272
+      ],
+      "typeVersion": 1,
+      "id": "788826da-6b7e-4409-85ea-b62474ea31a5",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## Backup to Drive",
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        576,
+        272
+      ],
+      "typeVersion": 1,
+      "id": "35b1fcf8-86b2-4b92-ae40-547b977566b5",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## Dif - commit message with AI",
+        "height": 176,
+        "width": 416
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -512,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "c6e942ac-bb38-4031-ba33-08212f239508",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Points for the article\n\nNo  n8n limitation of 1 day hostory, Git will maintain unlimited versions\n\nProper comment based on the change will help to get back to the correct change. (AI used)\n\nPeriodic Backup or Where there is a change in the workflow",
+        "height": 624,
+        "width": 464
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1712,
+        -240
+      ],
+      "typeVersion": 1,
+      "id": "3a043945-5af3-4cc9-b2fd-0c6d89c1e3de",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        480
+      ],
+      "id": "82913763-85fa-4f14-bdf4-ea2a62310c54",
+      "name": "Get many workflows",
+      "credentials": {
+        "n8nApi": {
+          "id": "m2d0HT9UuFtzGfuP",
+          "name": "n8n account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const githubFiles = items[0].json.githubFiles; \nconst n8nWorkflows = items[1].json.workflows;\n\nconst n8nNames = n8nWorkflows.map(w => w.name + '.json');\n\nconst filesToDelete = githubFiles.filter(file => !n8nNames.includes(file));\n\nreturn filesToDelete.map(f => ({ json: { path: f } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        496
+      ],
+      "id": "de705d63-92f4-46f3-869d-3959f193d0b6",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "={{$json.path}}",
+        "commitMessage": "Auto delete removed workflow"
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        480
+      ],
+      "id": "751653ff-aadb-4edd-a26f-5bb7890e98fb",
+      "name": "Delete a file",
+      "webhookId": "3bfd707e-2d3e-4a1b-a86c-25c1d902fc3a",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        }
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        -464,
+        480
+      ],
+      "id": "4ff58add-aa75-4865-80db-13828f1183bf",
+      "name": "List files",
+      "webhookId": "55f26fba-c881-405b-a7c6-b004183329cb",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "merin-D",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "n8n_backup",
+          "mode": "list",
+          "cachedResultName": "n8n_backup",
+          "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+        },
+        "filePath": "=",
+        "commitMessage": "="
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1344,
+        -256
+      ],
+      "id": "01c32b52-5dea-451c-8f90-735403b6cf7a",
+      "name": "Delete a file1",
+      "webhookId": "8aded0b9-dd1e-4c35-a269-46ff104c7f77",
+      "credentials": {
+        "githubApi": {
+          "id": "Uq5YyACHjNGYTcJj",
+          "name": "GitHub account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => ({\n  json: item.json,\n  pairedItem: item.pairedItem\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        16
+      ],
+      "id": "5eaf851d-73f0-4e56-8aa7-2ced01c03960",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "content": "https://github.com/merin-D/n8n_backup"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        -336
+      ],
+      "typeVersion": 1,
+      "id": "17a6344c-fed6-411a-9c2f-27b70ae96da4",
+      "name": "Sticky Note8"
+    }
+  ],
+  "connections": {
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Retrieve workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Json file": {
+      "main": [
+        [
+          {
+            "node": "To base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To base64": {
+      "main": [
+        [
+          {
+            "node": "Commit date & file name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "List files from repo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrieve workflows": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if file exists": {
+      "main": [
+        [
+          {
+            "node": "Update file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List files from repo": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Commit date & file name": {
+      "main": [
+        [
+          {
+            "node": "Check if file exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many workflows": {
+      "main": [
+        []
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        []
+      ]
+    },
+    "List files": {
+      "main": [
+        [
+          {
+            "node": "Get many workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Json file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "dfb83c47-1950-4af0-98ec-67fef8d7e513",
+  "activeVersionId": "6a25224e-4944-4603-be09-74793ef5fdc9",
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2026-04-07T09:31:09.216Z",
+      "createdAt": "2026-04-07T09:31:09.216Z",
+      "role": "workflow:owner",
+      "workflowId": "oO0fMXDkxvNT0nDP",
+      "projectId": "6A4ZRN1cCrGEOl69"
+    }
+  ],
+  "activeVersion": {
+    "updatedAt": "2026-04-07T09:44:43.000Z",
+    "createdAt": "2026-04-07T09:44:41.400Z",
+    "versionId": "6a25224e-4944-4603-be09-74793ef5fdc9",
+    "workflowId": "oO0fMXDkxvNT0nDP",
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {}
+            ]
+          }
+        },
+        "id": "4b05abf7-11b7-4f8e-bbcb-1c6fd921e40b",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "position": [
+          -624,
+          16
+        ],
+        "typeVersion": 1.2
+      },
+      {
+        "parameters": {
+          "filters": {},
+          "requestOptions": {}
+        },
+        "id": "12fa8554-9477-4468-9e34-f5adbff06b23",
+        "name": "Retrieve workflows",
+        "type": "n8n-nodes-base.n8n",
+        "position": [
+          0,
+          16
+        ],
+        "typeVersion": 1,
+        "credentials": {
+          "n8nApi": {
+            "id": "m2d0HT9UuFtzGfuP",
+            "name": "n8n account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "name"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "1a03f729-84a4-4683-8603-cc86fa4476e0",
+        "name": "Aggregate",
+        "type": "n8n-nodes-base.aggregate",
+        "position": [
+          -240,
+          16
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          },
+          "filePath": "="
+        },
+        "id": "81605ea0-bd1e-41bf-be8c-83cdb6fb0bb2",
+        "name": "List files from repo",
+        "type": "n8n-nodes-base.github",
+        "position": [
+          -400,
+          16
+        ],
+        "webhookId": "29579f80-d12d-463e-aa2b-4013b11cd064",
+        "typeVersion": 1,
+        "alwaysOutputData": true,
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "edit",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          },
+          "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
+          "fileContent": "={{ $('To base64').item.json.data }}",
+          "commitMessage": "=Sync-{{ $('Commit date & file name').item.json.commitDate }}"
+        },
+        "id": "49d5c74e-e54d-4c5f-a485-2f254dbd27f6",
+        "name": "Update file",
+        "type": "n8n-nodes-base.github",
+        "position": [
+          1344,
+          -64
+        ],
+        "webhookId": "27615548-5dd2-4eba-8d86-f548dc53a1fc",
+        "typeVersion": 1,
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          },
+          "filePath": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json",
+          "fileContent": "={{ $('To base64').item.json.data }}",
+          "commitMessage": "=Sync-{{ $node['Commit date & file name'].json.commitDate }}"
+        },
+        "id": "2399ead3-1283-4c57-9768-f2d03e2384c0",
+        "name": "Upload file",
+        "type": "n8n-nodes-base.github",
+        "position": [
+          1344,
+          96
+        ],
+        "webhookId": "a1fb1aa4-c3a8-4d53-9398-5718cc2a28dc",
+        "typeVersion": 1,
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $('Aggregate').item.json.name }}",
+                "operation": "contains",
+                "value2": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json"
+              }
+            ]
+          }
+        },
+        "id": "7680671b-63af-4f23-b76a-dfe65ce64fa0",
+        "name": "Check if file exists",
+        "type": "n8n-nodes-base.if",
+        "position": [
+          1184,
+          16
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "operation": "toJson",
+          "mode": "each",
+          "options": {
+            "format": true
+          }
+        },
+        "id": "ed73ca00-cc2a-49d6-b240-32b5c2e8bebb",
+        "name": "Json file",
+        "type": "n8n-nodes-base.convertToFile",
+        "position": [
+          368,
+          16
+        ],
+        "typeVersion": 1.1
+      },
+      {
+        "parameters": {
+          "operation": "binaryToPropery",
+          "options": {}
+        },
+        "id": "e902f5df-619b-414a-be1d-33ba63107617",
+        "name": "To base64",
+        "type": "n8n-nodes-base.extractFromFile",
+        "position": [
+          608,
+          16
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "content": "### Retrieve previous file names from Github",
+          "height": 380,
+          "width": 348,
+          "color": 5
+        },
+        "id": "0b02a0d2-607b-40ba-92ba-bed33ec4ca17",
+        "name": "Sticky Note1",
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -448,
+          -128
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "fe4a36ef-9f04-40e3-99bd-cc517a49b440",
+                "name": "commitDate",
+                "type": "string",
+                "value": "={{ $now.format('dd-MM-yyyy/H:mm') }}"
+              },
+              {
+                "id": "b0fe1bcc-e79c-4a6b-b8b4-44222c8bf4e8",
+                "name": "fileName",
+                "type": "string",
+                "value": "={{ $('Retrieve workflows').item.json.name.replace(/\\s+/g, '-').toLowerCase() }}-{{ $('Retrieve workflows').item.json.tags[0].name }}.json"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "e8e3fe47-550b-4f66-9dd5-a3daac4cf3cf",
+        "name": "Commit date & file name",
+        "type": "n8n-nodes-base.set",
+        "position": [
+          1024,
+          16
+        ],
+        "typeVersion": 3.4
+      },
+      {
+        "parameters": {
+          "content": "### Retrieve and process workflows from n8n",
+          "height": 380,
+          "width": 1032,
+          "color": 3
+        },
+        "id": "1f919bc1-f433-4617-b920-571686b2dc66",
+        "name": "Sticky Note2",
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -80,
+          -128
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "content": "### Commit + edit/create files if needed",
+          "height": 380,
+          "width": 460,
+          "color": 4
+        },
+        "id": "5e30c0e7-ef38-43a5-816f-2d02ff207e6c",
+        "name": "Sticky Note3",
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          992,
+          -128
+        ],
+        "typeVersion": 1
+      },
+      {
+        "parameters": {
+          "content": "## delete from git too ?",
+          "height": 176,
+          "width": 304
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -80,
+          272
+        ],
+        "typeVersion": 1,
+        "id": "17859a97-71b4-4fca-a2bd-817c12366d71",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "content": "## Backup to SFTp and FTP",
+          "width": 304
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          240,
+          272
+        ],
+        "typeVersion": 1,
+        "id": "788826da-6b7e-4409-85ea-b62474ea31a5",
+        "name": "Sticky Note4"
+      },
+      {
+        "parameters": {
+          "content": "## Backup to Drive",
+          "width": 304
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          576,
+          272
+        ],
+        "typeVersion": 1,
+        "id": "35b1fcf8-86b2-4b92-ae40-547b977566b5",
+        "name": "Sticky Note5"
+      },
+      {
+        "parameters": {
+          "content": "## Dif - commit message with AI",
+          "height": 176,
+          "width": 416
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -512,
+          -320
+        ],
+        "typeVersion": 1,
+        "id": "c6e942ac-bb38-4031-ba33-08212f239508",
+        "name": "Sticky Note6"
+      },
+      {
+        "parameters": {
+          "content": "## Points for the article\n\nNo  n8n limitation of 1 day hostory, Git will maintain unlimited versions\n\nProper comment based on the change will help to get back to the correct change. (AI used)\n\nPeriodic Backup or Where there is a change in the workflow",
+          "height": 624,
+          "width": 464
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -1712,
+          -240
+        ],
+        "typeVersion": 1,
+        "id": "3a043945-5af3-4cc9-b2fd-0c6d89c1e3de",
+        "name": "Sticky Note7"
+      },
+      {
+        "parameters": {
+          "filters": {},
+          "requestOptions": {}
+        },
+        "type": "n8n-nodes-base.n8n",
+        "typeVersion": 1,
+        "position": [
+          -224,
+          480
+        ],
+        "id": "82913763-85fa-4f14-bdf4-ea2a62310c54",
+        "name": "Get many workflows",
+        "credentials": {
+          "n8nApi": {
+            "id": "m2d0HT9UuFtzGfuP",
+            "name": "n8n account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const githubFiles = items[0].json.githubFiles; \nconst n8nWorkflows = items[1].json.workflows;\n\nconst n8nNames = n8nWorkflows.map(w => w.name + '.json');\n\nconst filesToDelete = githubFiles.filter(file => !n8nNames.includes(file));\n\nreturn filesToDelete.map(f => ({ json: { path: f } }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          16,
+          496
+        ],
+        "id": "de705d63-92f4-46f3-869d-3959f193d0b6",
+        "name": "Code in JavaScript"
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "delete",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          },
+          "filePath": "={{$json.path}}",
+          "commitMessage": "Auto delete removed workflow"
+        },
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          224,
+          480
+        ],
+        "id": "751653ff-aadb-4edd-a26f-5bb7890e98fb",
+        "name": "Delete a file",
+        "webhookId": "3bfd707e-2d3e-4a1b-a86c-25c1d902fc3a",
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "list",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          }
+        },
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          -464,
+          480
+        ],
+        "id": "4ff58add-aa75-4865-80db-13828f1183bf",
+        "name": "List files",
+        "webhookId": "55f26fba-c881-405b-a7c6-b004183329cb",
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "delete",
+          "owner": {
+            "__rl": true,
+            "value": "merin-D",
+            "mode": "name"
+          },
+          "repository": {
+            "__rl": true,
+            "value": "n8n_backup",
+            "mode": "list",
+            "cachedResultName": "n8n_backup",
+            "cachedResultUrl": "https://github.com/merin-D/n8n_backup"
+          },
+          "filePath": "=",
+          "commitMessage": "="
+        },
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1.1,
+        "position": [
+          1344,
+          -256
+        ],
+        "id": "01c32b52-5dea-451c-8f90-735403b6cf7a",
+        "name": "Delete a file1",
+        "webhookId": "8aded0b9-dd1e-4c35-a269-46ff104c7f77",
+        "credentials": {
+          "githubApi": {
+            "id": "Uq5YyACHjNGYTcJj",
+            "name": "GitHub account 3"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "jsCode": "const githubFiles = $input.first(0).json.githubFiles;\nconst workflows = $input.all(1).map(i => i.json);\n\nconst n8nNames = workflows.map(w => w.name + '.json');\n\nconst filesToDelete = githubFiles.filter(f => !n8nNames.includes(f));\n\nreturn filesToDelete.map(f => ({ json: { path: f } }));"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          208,
+          16
+        ],
+        "id": "5eaf851d-73f0-4e56-8aa7-2ced01c03960",
+        "name": "Code in JavaScript1"
+      },
+      {
+        "parameters": {
+          "content": "https://github.com/merin-D/n8n_backup"
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -32,
+          -336
+        ],
+        "typeVersion": 1,
+        "id": "17a6344c-fed6-411a-9c2f-27b70ae96da4",
+        "name": "Sticky Note8"
+      }
+    ],
+    "connections": {
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "Retrieve workflows",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Json file": {
+        "main": [
+          [
+            {
+              "node": "To base64",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "To base64": {
+        "main": [
+          [
+            {
+              "node": "Commit date & file name",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "List files from repo",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Retrieve workflows": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Check if file exists": {
+        "main": [
+          [
+            {
+              "node": "Update file",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Upload file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "List files from repo": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Commit date & file name": {
+        "main": [
+          [
+            {
+              "node": "Check if file exists",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get many workflows": {
+        "main": [
+          []
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          []
+        ]
+      },
+      "List files": {
+        "main": [
+          [
+            {
+              "node": "Get many workflows",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript1": {
+        "main": [
+          [
+            {
+              "node": "Json file",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "merin dzousamerin@gmail.com",
+    "name": "Version 6a25224e",
+    "description": "",
+    "autosaved": true
+  },
+  "tags": [
+    {
+      "updatedAt": "2026-03-26T11:11:42.300Z",
+      "createdAt": "2026-03-26T11:11:42.300Z",
+      "id": "MafV0QzOGcn2AUtk",
+      "name": "Ucartz"
+    }
+  ]
+}
