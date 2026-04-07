@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T12:37:33.758Z",
+  "updatedAt": "2026-04-07T12:39:50.286Z",
   "createdAt": "2026-04-07T12:01:26.402Z",
   "id": "31KRPNmyQMZIp6VO",
   "name": "n8n Workflows → GitHub Backup (Auto-Sync)",
@@ -8,7 +8,7 @@
   "nodes": [
     {
       "parameters": {
-        "content": "# 🗂️ n8n → GitHub Backup Workflow\n\n## What this does\nAutomatically backs up all your n8n workflows as JSON files to a GitHub repository on a schedule.\n\n## Features\n- ✅ Creates new files for new workflows\n- ✅ Updates existing files when workflows change\n- ✅ Deletes files for workflows that were renamed or removed\n- ✅ Skips unchanged workflows (size-based diff check)\n- ✅ Timestamped commit messages\n\n## Setup (one-time)\n1. **GitHub credential** — create a Personal Access Token with `repo` scope and add it as a GitHub credential in n8n\n2. **n8n API credential** — generate an n8n API key under *Settings → API* and add it as an n8n credential\n3. **GitHub repo** — create an empty repository on GitHub (e.g. `your-username/n8n-backup`)\n4. Update all GitHub nodes: set your **owner** (GitHub username) and **repository** name\n5. Adjust the **Schedule Trigger** to your preferred backup interval (default: every hour)\n\n## Notes\n- Workflow files are named using the workflow name, lowercased and hyphenated (e.g. `my-workflow.json`)\n- The repo at the top of the canvas links to a working example",
+        "content": "# 🗂️ n8n → GitHub sync Workflow\n\n## What this does\nAutomatically backs up all your n8n workflows as JSON files to a GitHub repository on a schedule.\n\n## Features\n- ✅ Creates new files for new workflows\n- ✅ Updates existing files when workflows change\n- ✅ Deletes files for workflows that were renamed or removed\n- ✅ Skips unchanged workflows (size-based diff check)\n- ✅ Timestamped commit messages\n\n## Setup (one-time)\n1. **GitHub credential** — create a Personal Access Token with `repo` scope and add it as a GitHub credential in n8n\n2. **n8n API credential** — generate an n8n API key under *Settings → API* and add it as an n8n credential\n3. **GitHub repo** — create an empty repository on GitHub (e.g. `your-username/n8n-backup`)\n4. Update all GitHub nodes: set your **owner** (GitHub username) and **repository** name\n5. Adjust the **Schedule Trigger** to your preferred backup interval (default: every hour)\n\n## Notes\n- Workflow files are named using the workflow name, lowercased and hyphenated (e.g. `my-workflow.json`)\n- The repo at the top of the canvas links to a working example",
         "height": 700,
         "width": 820,
         "color": 7
@@ -573,7 +573,7 @@
   "staticData": null,
   "meta": null,
   "pinData": {},
-  "versionId": "8755f0f7-6720-4023-a92e-123d7681cfd9",
+  "versionId": "eac80482-be51-4975-87bf-345c4d58a42d",
   "activeVersionId": null,
   "triggerCount": 0,
   "shared": [
@@ -588,8 +588,8 @@
   "activeVersion": null,
   "tags": [],
   "_fileName": "n8n-workflows-→-github-backup-(auto-sync).json",
-  "_currentSize": 18577,
-  "_githubSize": null,
+  "_currentSize": 18575,
+  "_githubSize": 18730,
   "_changed": true,
-  "_isNew": true
+  "_isNew": false
 }
