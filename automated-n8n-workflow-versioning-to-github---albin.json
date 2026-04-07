@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:53:08.900Z",
+  "updatedAt": "2026-04-07T11:58:27.670Z",
   "createdAt": "2026-04-07T09:31:09.211Z",
   "id": "oO0fMXDkxvNT0nDP",
   "name": "Automated N8N Workflow versioning to github - albin",
@@ -14,7 +14,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        880,
+        624,
         6800
       ],
       "typeVersion": 1,
@@ -24,11 +24,11 @@
     {
       "parameters": {
         "content": "https://github.com/merin-D/n8n_backup",
-        "width": 400
+        "width": 448
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        976,
+        640,
         6608
       ],
       "typeVersion": 1,
@@ -47,8 +47,8 @@
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        1456,
-        6880
+        1216,
+        6816
       ],
       "typeVersion": 1.2
     },
@@ -61,7 +61,7 @@
       "name": "Retrieve workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        2032,
+        1792,
         6816
       ],
       "typeVersion": 1,
@@ -87,8 +87,8 @@
       "name": "Aggregate",
       "type": "n8n-nodes-base.aggregate",
       "position": [
-        1840,
-        6880
+        1600,
+        6816
       ],
       "typeVersion": 1
     },
@@ -114,8 +114,8 @@
       "name": "List files from repo",
       "type": "n8n-nodes-base.github",
       "position": [
-        1680,
-        6880
+        1440,
+        6816
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -231,8 +231,8 @@
       "name": "Json file",
       "type": "n8n-nodes-base.convertToFile",
       "position": [
-        2240,
-        6880
+        2128,
+        6816
       ],
       "typeVersion": 1.1
     },
@@ -245,8 +245,8 @@
       "name": "To base1",
       "type": "n8n-nodes-base.extractFromFile",
       "position": [
-        2432,
-        6880
+        2288,
+        6816
       ],
       "typeVersion": 1
     },
@@ -357,8 +357,8 @@
       "name": "Sticky Note8",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1632,
-        6736
+        1392,
+        6672
       ],
       "typeVersion": 1
     },
@@ -366,15 +366,15 @@
       "parameters": {
         "content": "### Retrieve and process workflows from n8n",
         "height": 380,
-        "width": 600,
+        "width": 680,
         "color": 3
       },
       "id": "bdb56d11-9b1a-410f-a913-928098d40101",
       "name": "Sticky Note10",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2000,
-        6736
+        1760,
+        6656
       ],
       "typeVersion": 1
     },
@@ -417,8 +417,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2288,
-        6688
+        1968,
+        6816
       ],
       "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
       "name": "Filter changed files"
@@ -587,8 +587,8 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
-  "activeVersionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
+  "versionId": "b2f9aaf5-2173-4b03-b576-c16e8c89f7f0",
+  "activeVersionId": "b2f9aaf5-2173-4b03-b576-c16e8c89f7f0",
   "triggerCount": 1,
   "shared": [
     {
@@ -600,9 +600,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-04-07T11:53:15.000Z",
-    "createdAt": "2026-04-07T11:53:08.902Z",
-    "versionId": "87feb7eb-3384-4fca-9ac4-a0687ac016e1",
+    "updatedAt": "2026-04-07T12:03:05.000Z",
+    "createdAt": "2026-04-07T11:58:27.671Z",
+    "versionId": "b2f9aaf5-2173-4b03-b576-c16e8c89f7f0",
     "workflowId": "oO0fMXDkxvNT0nDP",
     "nodes": [
       {
@@ -613,7 +613,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          880,
+          624,
           6800
         ],
         "typeVersion": 1,
@@ -623,11 +623,11 @@
       {
         "parameters": {
           "content": "https://github.com/merin-D/n8n_backup",
-          "width": 400
+          "width": 448
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          976,
+          640,
           6608
         ],
         "typeVersion": 1,
@@ -646,8 +646,8 @@
         "name": "Schedule Trigger",
         "type": "n8n-nodes-base.scheduleTrigger",
         "position": [
-          1456,
-          6880
+          1216,
+          6816
         ],
         "typeVersion": 1.2
       },
@@ -660,7 +660,7 @@
         "name": "Retrieve workflows",
         "type": "n8n-nodes-base.n8n",
         "position": [
-          2032,
+          1792,
           6816
         ],
         "typeVersion": 1,
@@ -686,8 +686,8 @@
         "name": "Aggregate",
         "type": "n8n-nodes-base.aggregate",
         "position": [
-          1840,
-          6880
+          1600,
+          6816
         ],
         "typeVersion": 1
       },
@@ -713,8 +713,8 @@
         "name": "List files from repo",
         "type": "n8n-nodes-base.github",
         "position": [
-          1680,
-          6880
+          1440,
+          6816
         ],
         "typeVersion": 1,
         "alwaysOutputData": true,
@@ -830,8 +830,8 @@
         "name": "Json file",
         "type": "n8n-nodes-base.convertToFile",
         "position": [
-          2240,
-          6880
+          2128,
+          6816
         ],
         "typeVersion": 1.1
       },
@@ -844,8 +844,8 @@
         "name": "To base1",
         "type": "n8n-nodes-base.extractFromFile",
         "position": [
-          2432,
-          6880
+          2288,
+          6816
         ],
         "typeVersion": 1
       },
@@ -956,8 +956,8 @@
         "name": "Sticky Note8",
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          1632,
-          6736
+          1392,
+          6672
         ],
         "typeVersion": 1
       },
@@ -965,15 +965,15 @@
         "parameters": {
           "content": "### Retrieve and process workflows from n8n",
           "height": 380,
-          "width": 600,
+          "width": 680,
           "color": 3
         },
         "id": "bdb56d11-9b1a-410f-a913-928098d40101",
         "name": "Sticky Note10",
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          2000,
-          6736
+          1760,
+          6656
         ],
         "typeVersion": 1
       },
@@ -1016,8 +1016,8 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          2288,
-          6688
+          1968,
+          6816
         ],
         "id": "0d708e59-8918-4f40-ac0b-770e2a533403",
         "name": "Filter changed files"
@@ -1170,7 +1170,7 @@
       }
     },
     "authors": "merin dzousamerin@gmail.com",
-    "name": "Version 87feb7eb",
+    "name": "Version b2f9aaf5",
     "description": "",
     "autosaved": true
   },
