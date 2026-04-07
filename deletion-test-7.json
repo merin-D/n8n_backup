@@ -1,0 +1,98 @@
+{
+  "updatedAt": "2026-04-07T11:43:18.408Z",
+  "createdAt": "2026-04-07T10:09:21.818Z",
+  "id": "c51IRdWJfkPnKAxV",
+  "name": "Deletion test 7",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -64
+      ],
+      "id": "a998b06f-466b-4809-b31d-b1575ae8002e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        128,
+        -64
+      ],
+      "id": "7fbbdbdd-402c-4913-a0e0-65c0d309dc84",
+      "name": "When chat message received",
+      "webhookId": "05fdbb08-3edf-4a18-8cbf-b5365b7c535f"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        336,
+        -64
+      ],
+      "id": "7a26a28d-ddc3-401a-8584-6cb266a11631",
+      "name": "AI Agent"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "67b8fa37-1043-4f23-b641-2686ce93338d",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-04-07T10:09:21.821Z",
+      "createdAt": "2026-04-07T10:09:21.821Z",
+      "role": "workflow:owner",
+      "workflowId": "c51IRdWJfkPnKAxV",
+      "projectId": "6A4ZRN1cCrGEOl69"
+    }
+  ],
+  "activeVersion": null,
+  "tags": [],
+  "_fileName": "deletion-test-7.json",
+  "_currentSize": 2026,
+  "_githubSize": null,
+  "_changed": true,
+  "_isNew": true
+}
