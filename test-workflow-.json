@@ -1,0 +1,78 @@
+{
+  "updatedAt": "2026-03-24T01:15:37.373Z",
+  "createdAt": "2026-03-24T01:09:29.713Z",
+  "id": "A3Ay72l63vrmunst",
+  "name": "test workflow",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ce021bf1-531d-4de4-b884-25e854c45522",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5b970db1-147c-40c7-8e15-6657e370f32b",
+              "name": "status",
+              "value": "Server ok",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c120f7c2-b5a2-4da1-95c1-b1cc3411667f",
+      "name": "Edit Fields"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "pinData": {},
+  "versionId": "ed023092-4d6b-409e-b9d2-47309d6a755e",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-03-24T01:09:29.717Z",
+      "createdAt": "2026-03-24T01:09:29.717Z",
+      "role": "workflow:owner",
+      "workflowId": "A3Ay72l63vrmunst",
+      "projectId": "6A4ZRN1cCrGEOl69"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}
